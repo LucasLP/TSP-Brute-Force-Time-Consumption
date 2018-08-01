@@ -3,18 +3,21 @@
 #Try it Online!
     # http://rextester.com/l/r_online_compiler
 
-
+    #or execute in you desktop application
+    #Rscript Script.R
 #=====================================================
 #           Parameters
 #=====================================================
 
+#General Informations
 cities <- 25
+currency <- "R$"
+kiloWattHour <- 0.81 #in your currency
 
 #CPU informations
 ghz <- 2.5
 cores <- 4
 TDP <- 25 #watts
-kiloWattHour <- 0.81
 
 #Number of CPU able to compute
 parallelCPUs <- 10
@@ -36,19 +39,30 @@ for(i in 1:cities){
     years <- days/365
     myears <- years/1000000
     
-    cost <- format(round(hours*TDP*kiloWattHour,2), nsmall = 2)
         
+    result <- paste("N. Cities: ",i,"   N. possibilities: ",possibilities,sep="")
     if(myears > 1){
-        print(paste("N. Cities: ",i,"   N. possibilities: ",possibilities,"   time: ",round(myears,3)," million of years    Total Cost: R$",cost,sep=""));
+        result <- (paste(result,"   time: ",round(myears,3)," million of years",sep=""));
     }else if(years > 1) {
-        print(paste("N. Cities: ",i,"   N. possibilities: ",possibilities,"   time: ",round(years,3)," years    Total Cost: R$",cost,sep=""));
+        result <- (paste(result,"   time: ",round(years,3)," years",sep=""));
     } else if(days > 1) { 
-        print(paste("N. Cities: ",i,"   N. possibilities: ",possibilities,"   time: ",round(days)," days and ", round((days %% 1)*24)," hours    Total Cost: R$",cost,sep=""));
+        result <- (paste(result,"   time: ",round(days)," days and ", round((days %% 1)*24)," hours",sep=""));
     } else if(hours > 1) {
-        print(paste("N. Cities: ",i,"   N. possibilities: ",possibilities,"   time: ",round(hours)," hours and ",round((hours %% 1)*60)," minutes    Total Cost: R$",cost,sep=""));
+        result <- (paste(result,"   time: ",round(hours)," hours and ",round((hours %% 1)*60)," minutes",sep=""));
     } else if(minutes > 1) {
-        print(paste("N. Cities: ",i,"   N. possibilities: ",possibilities,"   time: ",round(minutes)," minutes and ",round((minutes %% 1)*60)," seconds    Total Cost: R$",cost,sep=""));
+        result <- (paste(result,"   time: ",round(minutes)," minutes and ",round((minutes %% 1)*60)," seconds",sep=""));
     } else {
-        print(paste("N. Cities: ",i,"   N. possibilities: ",possibilities,"   time: ",round(seconds,3)," seconds    Total Cost: R$",cost,sep=""));
+        result <- (paste(result,"   time: ",round(seconds,3)," seconds",sep=""));
     }
+        
+    cost <- round(hours*TDP*kiloWattHour,2)
+    if(cost>1000000){
+        cost<-cost/1000000
+        cost <- format(cost, nsmall = 0)
+        result <- paste(result,"    Total Cost: ",currency," ",cost," Milhões",sep="");
+    }else{
+        cost <- format(cost, nsmall = 2)
+        result <- paste(result,"    Total Cost: ",currency," ",cost,sep="");
+    }
+    print(result)
 }
