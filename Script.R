@@ -11,16 +11,17 @@
 
 #General Informations
 cities <- 25
+
 currency <- "R$"
 kiloWattHour <- 0.81 #in your currency
 
 #CPU informations
-ghz <- 2.5
+ghz <- 3.1
 cores <- 4
 TDP <- 25 #watts
 
 #Number of CPU able to compute
-parallelCPUs <- 10
+parallelCPUs <- 1
   
 
 #=====================================================
@@ -58,8 +59,8 @@ for(i in 1:cities){
     cost <- round(hours*TDP*kiloWattHour,2)
     if(cost>1000000){
         cost<-cost/1000000
-        cost <- format(cost, nsmall = 0)
-        result <- paste(result,"    Total Cost: ",currency," ",cost," Milhões",sep="");
+        cost <- round(cost)
+        result <- paste(result,"    Total Cost: ",currency," ",cost," Millions",sep="");
     }else{
         cost <- format(cost, nsmall = 2)
         result <- paste(result,"    Total Cost: ",currency," ",cost,sep="");
