@@ -14,6 +14,7 @@ for(i in 1:cities){
   hours <- minutes/60
   days <- hours/24
   years <- days/365
+  myears <- years/1000000
         
   if(myears > 1){
     print(paste("N. Cities: ",i,"   N. possibilities: ",possibilities,"   time: ",round(myears,3)," million of years",sep=""));
