@@ -5,6 +5,8 @@ R program to estimate time consumpution of Brutal Force in TSP (Traveling Salesm
 see the script in: https://github.com/LucasLP/TSP-Brute-Force-Time-Consumption/blob/master/Script.R<br>
 <br>
 You can execute it online with http://rextester.com/l/r_online_compiler
+<br>
+This code is also implemented in javascript, test in this web application: https://lucaslp.github.io/jtsp.html
 
 
 <br>
