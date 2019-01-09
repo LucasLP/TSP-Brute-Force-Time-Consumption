@@ -1,5 +1,5 @@
 # TSP-Brute-Force-Time-Consumption
-R program to estimate time consumpution of Brutal Force in TSP (Traveling Salesman Problem)
+R program to estimate time consumpution of Brute Force in TSP (Traveling Salesman Problem)
 <br>
 
 see the script in: https://github.com/LucasLP/TSP-Brute-Force-Time-Consumption/blob/master/Script.R<br>
